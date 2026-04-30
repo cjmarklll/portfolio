@@ -1,0 +1,49 @@
+---
+title: "Tailwind CSS Tips and Tricks"
+date: "2025-03-10"
+excerpt: "Some useful Tailwind CSS techniques I've picked up over the years."
+tags: ["css", "tailwind", "tips"]
+draft: false
+---
+
+## Useful Patterns
+
+Here are some Tailwind CSS patterns I use all the time.
+
+### Gradient Text
+
+```html
+<h1 class="bg-gradient-to-r from-indigo-500 to-cyan-400 bg-clip-text text-transparent">
+  Gradient Heading
+</h1>
+```
+
+### Glass Effect
+
+```html
+<div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-xl">
+  Glass card
+</div>
+```
+
+### Responsive Grid
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- cards -->
+</div>
+```
+
+## Custom Utilities
+
+I like to define custom utilities in my CSS:
+
+```css
+@utility glow {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
+```
+
+## Conclusion
+
+Tailwind CSS is incredibly powerful once you learn its utility-first approach. These patterns have saved me countless hours of writing custom CSS.

@@ -1,0 +1,64 @@
+---
+title: "Building My Portfolio with Next.js"
+date: "2025-02-01"
+excerpt: "A deep dive into how I built this portfolio website using Next.js, Tailwind CSS, and MDX."
+coverImage: "/images/posts/portfolio-cover.jpg"
+tags: ["nextjs", "react", "webdev"]
+draft: false
+---
+
+## Why Next.js?
+
+I chose Next.js for my portfolio because of its excellent developer experience and performance features:
+
+- **Server Components** - Zero JavaScript sent to client by default
+- **Static Generation** - Pages pre-rendered at build time
+- **MDX Support** - Write content in Markdown with React components
+
+## The Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| Next.js 14 | Framework |
+| Tailwind CSS | Styling |
+| MDX | Content |
+| Framer Motion | Animations |
+
+## Key Features
+
+### Dark Theme
+
+The dark theme uses a carefully crafted color palette:
+
+```css
+--color-background: #0a0a0f;
+--color-surface: #12121a;
+--color-accent: #6366f1;
+```
+
+### Particle Animation
+
+The hero section features a canvas-based particle animation that creates a constellation effect. Here's the core logic:
+
+```typescript
+function drawParticles(ctx: CanvasRenderingContext, particles: Particle[]) {
+  particles.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
+    ctx.fill();
+  });
+}
+```
+
+### MDX Blog
+
+Blog posts are written in MDX, which means I can use React components directly in my markdown content.
+
+## Deployment
+
+The site is deployed on Vercel with automatic deployments from the main branch. Every push triggers a new build.
+
+## Conclusion
+
+Building this portfolio was a great learning experience. The combination of Next.js and Tailwind CSS makes it easy to create performant, beautiful websites.
