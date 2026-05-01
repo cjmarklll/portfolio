@@ -22,21 +22,21 @@
 
 /* Light theme overrides */
 [data-theme="light"] {
-  --color-background: #faf8f5;
+  --color-background: #f5f0ea;
   --color-surface: #ffffff;
-  --color-surface-bright: #f5f0eb;
-  --color-border: #e8e0d8;
-  --color-text: #2a2025;
-  --color-text-muted: #7a7068;
+  --color-surface-bright: #ede8e2;
+  --color-border: #d8d0c8;
+  --color-text: #3a3035;
+  --color-text-muted: #6a6058;
   --color-heading: #1a1018;
-  --color-accent: #6366f1;
+  --color-accent: #5b5fc7;
   --color-accent-bright: #4f46e5;
-  --color-glow: #6366f140;
-  --color-cyan: #0e7490;
-  --color-accent-rgb: 99, 102, 241;
-  --color-cyan-rgb: 14, 116, 144;
+  --color-glow: rgba(91, 95, 199, 0.35);
+  --color-cyan: #0d6e85;
+  --color-accent-rgb: 91, 95, 199;
+  --color-cyan-rgb: 13, 110, 133;
   --color-heading-rgb: 26, 16, 24;
-  --color-muted-rgb: 122, 112, 104;
+  --color-muted-rgb: 106, 96, 88;
 }
 
 /* Theme transition */
@@ -76,10 +76,27 @@ body {
 }
 [data-theme="light"] .grid-bg {
   background-image: linear-gradient(
-      rgba(99, 102, 241, 0.06) 1px,
+      rgba(91, 95, 199, 0.08) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.06) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(91, 95, 199, 0.08) 1px, transparent 1px);
+}
+
+/* Light theme: hide heavy effects that don't work well */
+[data-theme="light"] .noise-overlay {
+  opacity: 0.15 !important;
+}
+[data-theme="light"] .aurora-canvas {
+  opacity: 0.3 !important;
+}
+[data-theme="light"] .hero-orb {
+  opacity: 0.06 !important;
+}
+[data-theme="light"] .hero-overlay {
+  opacity: 0.5 !important;
+}
+[data-theme="light"] .particle-canvas {
+  opacity: 0.25 !important;
 }
 
 /* Glow utilities */

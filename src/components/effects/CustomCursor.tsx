@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
   const [hovering, setHovering] = useState(false);
   const [clicking, setClicking] = useState(false);
+  const visibleRef = useRef(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -14,13 +15,17 @@ export default function CustomCursor() {
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    let mx = 0, my = 0;
-    let rx = 0, ry = 0;
+    // Start off-screen
+    let mx = -100, my = -100;
+    let rx = -100, ry = -100;
 
     const onMove = (e: MouseEvent) => {
       mx = e.clientX;
       my = e.clientY;
-      if (!visible) setVisible(true);
+      if (!visibleRef.current) {
+        visibleRef.current = true;
+        setVisible(true);
+      }
     };
 
     const onEnter = () => setHovering(true);
@@ -40,22 +45,16 @@ export default function CustomCursor() {
     window.addEventListener("mousedown", onDown);
     window.addEventListener("mouseup", onUp);
 
-    // Track hover on interactive elements
     const selectors = "a, button, [role='button'], input, textarea, select, .magnetic-btn";
-    document.querySelectorAll(selectors).forEach((el) => {
-      el.addEventListener("mouseenter", onEnter);
-      el.addEventListener("mouseleave", onLeave);
-    });
-
-    // Re-observe DOM for new interactive elements
-    const observer = new MutationObserver(() => {
+    const addListeners = () => {
       document.querySelectorAll(selectors).forEach((el) => {
-        el.removeEventListener("mouseenter", onEnter);
-        el.removeEventListener("mouseleave", onLeave);
         el.addEventListener("mouseenter", onEnter);
         el.addEventListener("mouseleave", onLeave);
       });
-    });
+    };
+    addListeners();
+
+    const observer = new MutationObserver(addListeners);
     observer.observe(document.body, { childList: true, subtree: true });
 
     animate();
@@ -66,7 +65,7 @@ export default function CustomCursor() {
       window.removeEventListener("mouseup", onUp);
       observer.disconnect();
     };
-  }, [visible]);
+  }, []); // No dependency on visible
 
   // Hide on touch devices
   if (typeof window !== "undefined" && "ontouchstart" in window) return null;
@@ -81,34 +80,38 @@ export default function CustomCursor() {
       {/* Dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        className="fixed pointer-events-none z-[9999]"
         style={{
+          top: 0,
+          left: 0,
           width: 8,
           height: 8,
           borderRadius: "50%",
           background: "var(--color-cyan)",
           opacity: visible ? 1 : 0,
-          transition: "opacity 0.3s, transform 0.1s",
           boxShadow: "0 0 6px var(--color-glow)",
+          willChange: "transform",
         }}
       />
       {/* Ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9998]"
+        className="fixed pointer-events-none z-[9998]"
         style={{
+          top: 0,
+          left: 0,
           width: clicking ? 24 : hovering ? 48 : 32,
           height: clicking ? 24 : hovering ? 48 : 32,
           borderRadius: "50%",
-          border: "1.5px solid var(--color-accent)",
           opacity: visible ? 1 : 0,
-          transition: "width 0.3s, height 0.3s, border-color 0.3s, opacity 0.3s, transform 0.15s",
-          borderColor: hovering ? "var(--color-cyan)" : "var(--color-accent)",
+          transition: "width 0.3s, height 0.3s, border-color 0.3s, opacity 0.15s",
+          border: `1.5px solid ${hovering ? "var(--color-cyan)" : "var(--color-accent)"}`,
           background: hovering
-            ? "color-mix(in srgb, var(--color-accent) 5%, transparent)"
+            ? "color-mix(in srgb, var(--color-accent) 8%, transparent)"
             : "transparent",
           marginLeft: clicking ? 4 : hovering ? -8 : 0,
           marginTop: clicking ? 4 : hovering ? -8 : 0,
+          willChange: "transform",
         }}
       />
     </>

@@ -42,7 +42,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.08)_0%,transparent_70%)]" />
+      <div className="hero-overlay absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.08)_0%,transparent_70%)]" />
 
       {/* Ambient orbs - medium parallax, different speeds */}
       <motion.div
@@ -51,7 +51,7 @@ export default function Hero() {
           scale: [1, 1.2, 0.9, 1],
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-10"
+        className="hero-orb absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-10"
         style={{
           y: orb1Y,
           background:
@@ -70,7 +70,7 @@ export default function Hero() {
           ease: "easeInOut",
           delay: 3,
         }}
-        className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full opacity-10"
+        className="hero-orb absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full opacity-10"
         style={{
           y: orb2Y,
           background:

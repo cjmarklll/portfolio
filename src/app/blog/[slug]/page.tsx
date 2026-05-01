@@ -55,7 +55,9 @@ export default async function BlogPost({
   const next = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
 
   return (
-    <article className="pt-24 pb-16 px-6">
+    <article className="relative pt-24 pb-16 px-6">
+      {/* Grid background for blog */}
+      <div className="fixed inset-0 grid-bg pointer-events-none opacity-20 z-0" />
       <div className="mx-auto max-w-3xl">
         <BlogPostLayout prev={prev} next={next}>
           <PostHeader post={post} />

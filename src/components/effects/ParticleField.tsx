@@ -150,7 +150,7 @@ export default function ParticleField() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 pointer-events-none"
+      className="particle-canvas absolute inset-0 pointer-events-none"
       style={{ opacity: 0.6 }}
     />
   );
