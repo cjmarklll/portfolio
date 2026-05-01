@@ -22,21 +22,21 @@
 
 /* Light theme overrides */
 [data-theme="light"] {
-  --color-background: #f5f0ea;
+  --color-background: #f0ebe4;
   --color-surface: #ffffff;
-  --color-surface-bright: #ede8e2;
-  --color-border: #d8d0c8;
-  --color-text: #3a3035;
-  --color-text-muted: #6a6058;
-  --color-heading: #1a1018;
+  --color-surface-bright: #e6e0d8;
+  --color-border: #c0b8ae;
+  --color-text: #1a1520;
+  --color-text-muted: #55504a;
+  --color-heading: #0a0810;
   --color-accent: #5b5fc7;
-  --color-accent-bright: #4f46e5;
+  --color-accent-bright: #4338ca;
   --color-glow: rgba(91, 95, 199, 0.35);
   --color-cyan: #0d6e85;
   --color-accent-rgb: 91, 95, 199;
   --color-cyan-rgb: 13, 110, 133;
-  --color-heading-rgb: 26, 16, 24;
-  --color-muted-rgb: 106, 96, 88;
+  --color-heading-rgb: 10, 8, 16;
+  --color-muted-rgb: 85, 80, 74;
 }
 
 /* Theme transition */
@@ -68,18 +68,19 @@ body {
 /* Grid background */
 .grid-bg {
   background-image: linear-gradient(
-      rgba(99, 102, 241, 0.04) 1px,
+      rgba(99, 102, 241, 0.08) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(90deg, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 [data-theme="light"] .grid-bg {
   background-image: linear-gradient(
-      rgba(91, 95, 199, 0.08) 1px,
+      rgba(91, 95, 199, 0.15) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(91, 95, 199, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(91, 95, 199, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 /* Light theme: hide heavy effects that don't work well */

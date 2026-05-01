@@ -57,7 +57,7 @@ export default async function BlogPost({
   return (
     <article className="relative pt-24 pb-16 px-6">
       {/* Grid background for blog */}
-      <div className="fixed inset-0 grid-bg pointer-events-none opacity-20 z-0" />
+      <div className="fixed inset-0 grid-bg pointer-events-none opacity-40 z-0" />
       <div className="mx-auto max-w-3xl">
         <BlogPostLayout prev={prev} next={next}>
           <PostHeader post={post} />

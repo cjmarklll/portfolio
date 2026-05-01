@@ -2,7 +2,7 @@ export default function GridBackground() {
   return (
     <div className="fixed inset-0 pointer-events-none z-0">
       {/* Grid pattern */}
-      <div className="absolute inset-0 grid-bg opacity-30" />
+      <div className="absolute inset-0 grid-bg opacity-50" />
       {/* Subtle vignette */}
       <div
         className="absolute inset-0"
