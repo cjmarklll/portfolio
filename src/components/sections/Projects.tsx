@@ -1,7 +1,7 @@
 "use client";
 
 import ScrollReveal from "@/components/effects/ScrollReveal";
-import TiltCard from "@/components/effects/TiltCard";
+import GradientBorderCard from "@/components/effects/GradientBorderCard";
 import Badge from "@/components/ui/Badge";
 import { useI18n } from "@/lib/i18n/context";
 import { ProjectMeta } from "@/lib/types";
@@ -22,7 +22,9 @@ export default function Projects({ projects }: ProjectsProps) {
               i === 0 ? (
                 <span key={i}>{word} </span>
               ) : (
-                <span key={i} className="gradient-text">{word} </span>
+                <span key={i} className="gradient-text">
+                  {word}{" "}
+                </span>
               )
             )}
           </h2>
@@ -34,10 +36,7 @@ export default function Projects({ projects }: ProjectsProps) {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
             <ScrollReveal key={project.slug} delay={i * 0.1}>
-              <TiltCard
-                className="p-6 h-full flex flex-col"
-                glowColor="rgba(99, 102, 241, 0.06)"
-              >
+              <GradientBorderCard className="h-full">
                 <a
                   href={project.liveUrl || project.githubUrl}
                   target="_blank"
@@ -52,15 +51,15 @@ export default function Projects({ projects }: ProjectsProps) {
                       fill="none"
                       stroke="currentColor"
                       strokeWidth="1"
-                      className="text-border transition-transform duration-500 group-hover:scale-110"
+                      className="text-border transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
                     >
                       <rect x="3" y="3" width="18" height="18" rx="2" />
                       <path d="M9 3v18M3 9h18" />
                     </svg>
-                    <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  <h3 className="text-lg font-semibold text-white mb-2">
+                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-accent-bright transition-colors">
                     {project.title}
                   </h3>
                   <p className="text-text-muted text-sm mb-4 flex-1">
@@ -86,7 +85,7 @@ export default function Projects({ projects }: ProjectsProps) {
                     )}
                   </div>
                 </a>
-              </TiltCard>
+              </GradientBorderCard>
             </ScrollReveal>
           ))}
         </div>

@@ -2,6 +2,7 @@ import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
+import SectionDivider from "@/components/effects/SectionDivider";
 import { getFeaturedProjects } from "@/lib/content";
 
 export default function Home() {
@@ -10,8 +11,11 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <Projects projects={projects} />
+      <SectionDivider />
       <Contact />
     </>
   );

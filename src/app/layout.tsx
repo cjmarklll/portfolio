@@ -5,6 +5,8 @@ import Footer from "@/components/layout/Footer";
 import PageLoader from "@/components/effects/PageLoader";
 import ScrollProgress from "@/components/effects/ScrollProgress";
 import GridBackground from "@/components/effects/GridBackground";
+import CursorGlow from "@/components/effects/CursorGlow";
+import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import { I18nProvider } from "@/lib/i18n/context";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
@@ -61,6 +63,8 @@ export default function RootLayout({
           <PageLoader />
           <ScrollProgress />
           <GridBackground />
+          <NoiseOverlay />
+          <CursorGlow />
           <Navigation />
           <main className="flex-1">{children}</main>
           <Footer />
