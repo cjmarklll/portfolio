@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Badge from "@/components/ui/Badge";
 import { PostMeta } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
@@ -18,19 +19,23 @@ export default function PostHeader({ post }: PostHeaderProps) {
         <span>{post.readingTime}</span>
       </div>
       {post.tags.length > 0 && (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-6">
           {post.tags.map((tag) => (
             <Badge key={tag}>{tag}</Badge>
           ))}
         </div>
       )}
       {post.coverImage && (
-        <div className="mt-6 w-full h-64 rounded-xl bg-surface-bright overflow-hidden">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+        <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
+          <Image
             src={post.coverImage}
             alt={post.title}
-            className="w-full h-full object-cover"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+            priority
+            placeholder="blur"
+            blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiMxMjEyMWEiLz48L3N2Zz4="
           />
         </div>
       )}

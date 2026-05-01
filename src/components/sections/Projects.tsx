@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import ScrollReveal from "@/components/effects/ScrollReveal";
 import GradientBorderCard from "@/components/effects/GradientBorderCard";
 import Badge from "@/components/ui/Badge";
@@ -43,19 +44,33 @@ export default function Projects({ projects }: ProjectsProps) {
                   rel="noopener noreferrer"
                   className="flex flex-col h-full"
                 >
-                  <div className="w-full h-40 rounded-lg bg-surface-bright mb-4 flex items-center justify-center overflow-hidden relative group">
-                    <svg
-                      width="48"
-                      height="48"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      className="text-border transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <path d="M9 3v18M3 9h18" />
-                    </svg>
+                  <div className="relative w-full h-40 rounded-lg bg-surface-bright mb-4 overflow-hidden group">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        placeholder="blur"
+                        blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIGZpbGw9IiMxMjEyMWEiLz48L3N2Zz4="
+                      />
+                    ) : (
+                      <div className="flex items-center justify-center h-full">
+                        <svg
+                          width="48"
+                          height="48"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          className="text-border transition-all duration-700 group-hover:scale-110 group-hover:rotate-3"
+                        >
+                          <rect x="3" y="3" width="18" height="18" rx="2" />
+                          <path d="M9 3v18M3 9h18" />
+                        </svg>
+                      </div>
+                    )}
                     <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 

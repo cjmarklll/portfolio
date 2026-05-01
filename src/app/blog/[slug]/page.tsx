@@ -5,6 +5,7 @@ import { getPostBySlug, getAllPosts } from "@/lib/content";
 import { mdxOptions } from "@/lib/mdx";
 import { MDXComponents } from "@/components/mdx/MDXComponents";
 import PostHeader from "@/components/blog/PostHeader";
+import BlogPostLayout from "@/components/blog/BlogPostLayout";
 
 export async function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -47,11 +48,19 @@ export default async function BlogPost({
     options: { mdxOptions } as any,
   });
 
+  // Get prev/next posts
+  const allPosts = getAllPosts();
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const prev = currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+  const next = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
   return (
     <article className="pt-24 pb-16 px-6">
       <div className="mx-auto max-w-3xl">
-        <PostHeader post={post} />
-        <div className="prose-custom">{content}</div>
+        <BlogPostLayout prev={prev} next={next}>
+          <PostHeader post={post} />
+          <div className="prose-custom">{content}</div>
+        </BlogPostLayout>
       </div>
     </article>
   );
