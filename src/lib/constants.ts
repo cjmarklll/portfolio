@@ -9,7 +9,6 @@ export const siteConfig: SiteConfig = {
   social: {
     github: "https://github.com/cjmarklll",
     email: "a1416357775@gmail.com",
-    wechat:"CJmarklll",
   },
 };
 
