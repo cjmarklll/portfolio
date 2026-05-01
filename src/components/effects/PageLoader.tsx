@@ -44,7 +44,7 @@ export default function PageLoader() {
             <motion.div
               animate={{ scale: [1, 1.4, 1] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute inset-0 m-auto w-3 h-3 rounded-full bg-accent shadow-[0_0_20px_rgba(99,102,241,0.8)]"
+              className="absolute inset-0 m-auto w-3 h-3 rounded-full bg-accent shadow-[0_0_20px_var(--color-glow)]"
             />
             {/* Orbiting dot */}
             <motion.div
@@ -52,7 +52,7 @@ export default function PageLoader() {
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
               className="absolute inset-0"
             >
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan shadow-[0_0_12px_rgba(34,211,238,0.8)]" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan shadow-[0_0_12px_var(--color-glow)]" />
             </motion.div>
           </div>
 

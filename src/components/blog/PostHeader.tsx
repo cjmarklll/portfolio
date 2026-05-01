@@ -10,7 +10,7 @@ interface PostHeaderProps {
 export default function PostHeader({ post }: PostHeaderProps) {
   return (
     <header className="mb-10">
-      <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <h1 className="text-3xl md:text-4xl font-bold text-heading mb-4">
         {post.title}
       </h1>
       <div className="flex flex-wrap items-center gap-3 text-sm text-text-muted mb-4">

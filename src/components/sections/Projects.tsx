@@ -26,7 +26,7 @@ export default function Projects({ projects }: ProjectsProps) {
     <section id="projects" className="py-24 px-6">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-heading mb-4 text-center">
             {t.projects.title.split(" ").map((word, i) =>
               i === 0 ? (
                 <span key={i}>{word} </span>
@@ -64,7 +64,7 @@ export default function Projects({ projects }: ProjectsProps) {
                     className="block"
                   >
                     {/* Card with animated border */}
-                    <div className="relative rounded-xl border border-border bg-surface overflow-hidden transition-all duration-500 group-hover:border-accent/50 group-hover:shadow-[0_0_30px_rgba(99,102,241,0.15)]">
+                    <div className="relative rounded-xl border border-border bg-surface overflow-hidden transition-all duration-500 group-hover:border-accent/50 group-hover:shadow-[0_0_30px_var(--color-glow)]">
                       {/* Image / Preview area */}
                       <div className="relative w-full h-48 overflow-hidden">
                         {project.image ? (
@@ -103,7 +103,7 @@ export default function Projects({ projects }: ProjectsProps) {
 
                       {/* Content */}
                       <div className="p-5">
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-accent-bright transition-colors">
+                        <h3 className="text-lg font-semibold text-heading mb-2 group-hover:text-accent-bright transition-colors">
                           {project.title}
                         </h3>
                         <p className="text-text-muted text-sm mb-4 line-clamp-2">

@@ -13,11 +13,12 @@ interface TiltCardProps {
 export default function TiltCard({
   children,
   className,
-  glowColor = "rgba(99, 102, 241, 0.15)",
+  glowColor,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [glowPosition, setGlowPosition] = useState({ x: 50, y: 50 });
+  const glow = glowColor || "rgba(var(--color-accent-rgb, 99, 102, 241), 0.15)";
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -50,7 +51,7 @@ export default function TiltCard({
       style={{
         transformStyle: "preserve-3d",
         perspective: 1000,
-        background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, ${glowColor}, transparent 60%)`,
+        background: `radial-gradient(circle at ${glowPosition.x}% ${glowPosition.y}%, ${glow}, transparent 60%)`,
       }}
       className={cn("relative rounded-xl border border-border bg-surface", className)}
     >

@@ -8,7 +8,7 @@ export default function GridBackground() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 50%, rgba(10,10,15,0.8) 100%)",
+            "radial-gradient(ellipse at center, transparent 50%, color-mix(in srgb, var(--color-background) 80%, transparent) 100%)",
         }}
       />
     </div>

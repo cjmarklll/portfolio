@@ -23,7 +23,7 @@ export default function BlogList({ posts, tags }: BlogListProps) {
 
   return (
     <>
-      <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <h1 className="text-3xl md:text-4xl font-bold text-heading mb-4">
         {t.blog.title}
       </h1>
       <p className="text-text-muted mb-10">

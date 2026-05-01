@@ -21,7 +21,7 @@ export default function GlowCard({ children, className, href }: GlowCardProps) {
         href={href}
         className={cn(
           "block rounded-xl border border-border bg-surface p-6",
-          "transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_20px_rgba(99,102,241,0.15)]",
+          "transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_20px_var(--color-glow)]",
           className
         )}
       >

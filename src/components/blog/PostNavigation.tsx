@@ -22,7 +22,7 @@ export default function PostNavigation({ prev, next }: PostNavigationProps) {
           <span className="text-xs text-text-muted">
             ← {locale === "zh" ? "上一篇" : "Previous"}
           </span>
-          <span className="text-sm font-medium text-white group-hover:text-accent-bright transition-colors line-clamp-1">
+          <span className="text-sm font-medium text-heading group-hover:text-accent-bright transition-colors line-clamp-1">
             {prev.title}
           </span>
         </Link>
@@ -37,7 +37,7 @@ export default function PostNavigation({ prev, next }: PostNavigationProps) {
           <span className="text-xs text-text-muted">
             {locale === "zh" ? "下一篇" : "Next"} →
           </span>
-          <span className="text-sm font-medium text-white group-hover:text-accent-bright transition-colors line-clamp-1">
+          <span className="text-sm font-medium text-heading group-hover:text-accent-bright transition-colors line-clamp-1">
             {next.title}
           </span>
         </Link>

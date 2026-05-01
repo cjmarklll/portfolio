@@ -101,7 +101,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-[1.1] tracking-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-bold text-heading mb-6 leading-[1.1] tracking-tight"
         >
           {t.hero.name.split("").map((char, i) => (
             <motion.span
@@ -140,7 +140,7 @@ export default function Hero() {
         >
           <MagneticButton
             href="/#projects"
-            className="group relative inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-8 py-3.5 text-sm font-medium text-white overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_rgba(99,102,241,0.5)]"
+            className="group relative inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-8 py-3.5 text-sm font-medium text-heading overflow-hidden transition-all duration-300 hover:shadow-[0_0_30px_var(--color-glow)]"
           >
             <span className="relative z-10">{t.hero.viewWork}</span>
             <span className="absolute inset-0 bg-gradient-to-r from-accent to-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

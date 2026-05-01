@@ -31,7 +31,7 @@ export default function GradientBorderCard({
       whileHover={{ scale: 1.01 }}
       className={cn("relative rounded-xl p-[1px] overflow-hidden", className)}
       style={{
-        background: `conic-gradient(from ${angle}deg, #6366f1, #22d3ee, #6366f1, #22d3ee, #6366f1)`,
+        background: `conic-gradient(from ${angle}deg, var(--color-accent), var(--color-cyan), var(--color-accent), var(--color-cyan), var(--color-accent))`,
       }}
     >
       <div className="rounded-xl bg-surface p-6 h-full">{children}</div>

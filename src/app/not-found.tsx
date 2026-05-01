@@ -13,7 +13,7 @@ export default function NotFound() {
         <p className="text-text-muted mb-8">{t.notFound.subtitle}</p>
         <Link
           href="/"
-          className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-medium text-white hover:bg-accent-bright transition-colors"
+          className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-sm font-medium text-heading hover:bg-accent-bright transition-colors"
         >
           {t.notFound.goHome}
         </Link>

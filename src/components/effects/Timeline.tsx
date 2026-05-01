@@ -26,7 +26,7 @@ export default function Timeline({ items }: TimelineProps) {
             }`}
           >
             {/* Dot */}
-            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_rgba(99,102,241,0.6)] z-10" />
+            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-accent shadow-[0_0_12px_var(--color-glow)] z-10" />
 
             {/* Content */}
             <div
@@ -37,7 +37,7 @@ export default function Timeline({ items }: TimelineProps) {
               <span className="text-xs font-mono text-accent-bright tracking-wider">
                 {item.year}
               </span>
-              <h4 className="text-white font-semibold mt-1">{item.title}</h4>
+              <h4 className="text-heading font-semibold mt-1">{item.title}</h4>
               <p className="text-text-muted text-sm mt-1">
                 {item.description}
               </p>

@@ -120,7 +120,7 @@ export default function GitHubActivity() {
     <section className="py-24 px-6">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-heading mb-4 text-center">
             {locale === "zh" ? "开源" : "Open Source"}{" "}
             <span className="gradient-text">
               {locale === "zh" ? "动态" : "Activity"}
@@ -137,7 +137,7 @@ export default function GitHubActivity() {
           {/* Recent Activity */}
           <ScrollReveal delay={0.1}>
             <div className="rounded-xl border border-border bg-surface p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-heading mb-4 flex items-center gap-2">
                 <svg
                   width="20"
                   height="20"
@@ -207,7 +207,7 @@ export default function GitHubActivity() {
           {/* Featured Repos */}
           <ScrollReveal delay={0.2}>
             <div className="rounded-xl border border-border bg-surface p-6">
-              <h3 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-heading mb-4 flex items-center gap-2">
                 <svg
                   width="20"
                   height="20"
@@ -247,7 +247,7 @@ export default function GitHubActivity() {
                       className="block p-4 rounded-lg border border-border hover:border-accent/50 hover:bg-surface-bright transition-all group"
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="text-sm font-medium text-white group-hover:text-accent-bright transition-colors">
+                        <h4 className="text-sm font-medium text-heading group-hover:text-accent-bright transition-colors">
                           {repo.name}
                         </h4>
                         <div className="flex items-center gap-1 text-xs text-text-muted">

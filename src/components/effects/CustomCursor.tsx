@@ -86,10 +86,10 @@ export default function CustomCursor() {
           width: 8,
           height: 8,
           borderRadius: "50%",
-          background: "#22d3ee",
+          background: "var(--color-cyan)",
           opacity: visible ? 1 : 0,
           transition: "opacity 0.3s, transform 0.1s",
-          boxShadow: "0 0 6px rgba(34,211,238,0.6)",
+          boxShadow: "0 0 6px var(--color-glow)",
         }}
       />
       {/* Ring */}
@@ -100,12 +100,12 @@ export default function CustomCursor() {
           width: clicking ? 24 : hovering ? 48 : 32,
           height: clicking ? 24 : hovering ? 48 : 32,
           borderRadius: "50%",
-          border: "1.5px solid rgba(99,102,241,0.5)",
+          border: "1.5px solid var(--color-accent)",
           opacity: visible ? 1 : 0,
           transition: "width 0.3s, height 0.3s, border-color 0.3s, opacity 0.3s, transform 0.15s",
-          borderColor: hovering ? "rgba(34,211,238,0.7)" : "rgba(99,102,241,0.5)",
+          borderColor: hovering ? "var(--color-cyan)" : "var(--color-accent)",
           background: hovering
-            ? "rgba(99,102,241,0.05)"
+            ? "color-mix(in srgb, var(--color-accent) 5%, transparent)"
             : "transparent",
           marginLeft: clicking ? 4 : hovering ? -8 : 0,
           marginTop: clicking ? 4 : hovering ? -8 : 0,

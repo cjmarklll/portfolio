@@ -21,12 +21,12 @@ export default function PostCard({ post }: PostCardProps) {
     >
       <Link
         href={`/blog/${post.slug}`}
-        className="group block rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.12)] relative overflow-hidden"
+        className="group block rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:border-accent/50 hover:shadow-[0_0_30px_var(--color-glow)] relative overflow-hidden"
       >
         <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         <div className="relative z-10">
-          <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-accent-bright transition-colors">
+          <h3 className="text-lg font-semibold text-heading mb-2 group-hover:text-accent-bright transition-colors">
             {post.title}
           </h3>
           <p className="text-text-muted text-sm mb-4 line-clamp-2">

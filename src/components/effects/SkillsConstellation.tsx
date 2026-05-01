@@ -15,6 +15,14 @@ interface SkillsConstellationProps {
   skills: string[];
 }
 
+function getThemeColors() {
+  const style = getComputedStyle(document.documentElement);
+  const accent = style.getPropertyValue("--color-accent-rgb").trim() || "99, 102, 241";
+  const cyan = style.getPropertyValue("--color-cyan-rgb").trim() || "34, 211, 238";
+  const muted = style.getPropertyValue("--color-muted-rgb").trim() || "139, 139, 158";
+  return { accent, cyan, muted };
+}
+
 export default function SkillsConstellation({ skills }: SkillsConstellationProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -89,6 +97,7 @@ export default function SkillsConstellation({ skills }: SkillsConstellationProps
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, w, h);
 
+      const { accent, cyan, muted } = getThemeColors();
       const nodes = nodesRef.current;
       const mouse = mouseRef.current;
       const time = Date.now();
@@ -128,8 +137,8 @@ export default function SkillsConstellation({ skills }: SkillsConstellationProps
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
             ctx.strokeStyle = isHoveredLine
-              ? `rgba(34, 211, 238, ${opacity * 4})`
-              : `rgba(99, 102, 241, ${opacity})`;
+              ? `rgba(${cyan}, ${opacity * 4})`
+              : `rgba(${accent}, ${opacity})`;
             ctx.lineWidth = isHoveredLine ? 1.5 : 0.5;
             ctx.stroke();
           }
@@ -149,7 +158,7 @@ export default function SkillsConstellation({ skills }: SkillsConstellationProps
               ctx.beginPath();
               ctx.moveTo(hNode.x, hNode.y);
               ctx.lineTo(node.x, node.y);
-              ctx.strokeStyle = `rgba(34, 211, 238, ${0.25 * (1 - dist / 260)})`;
+              ctx.strokeStyle = `rgba(${cyan}, ${0.25 * (1 - dist / 260)})`;
               ctx.lineWidth = 1;
               ctx.stroke();
             }
@@ -168,7 +177,7 @@ export default function SkillsConstellation({ skills }: SkillsConstellationProps
           node.x, node.y, 0,
           node.x, node.y, glowRadius
         );
-        gradient.addColorStop(0, isHovered ? "rgba(34,211,238,0.5)" : "rgba(99,102,241,0.3)");
+        gradient.addColorStop(0, isHovered ? `rgba(${cyan}, 0.5)` : `rgba(${accent}, 0.3)`);
         gradient.addColorStop(1, "transparent");
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -178,14 +187,14 @@ export default function SkillsConstellation({ skills }: SkillsConstellationProps
         // Node dot
         ctx.beginPath();
         ctx.arc(node.x, node.y, nodeRadius, 0, Math.PI * 2);
-        ctx.fillStyle = isHovered ? "#22d3ee" : "#6366f1";
+        ctx.fillStyle = isHovered ? `rgb(${cyan})` : `rgb(${accent})`;
         ctx.fill();
 
         // Label
         ctx.font = `${isHovered ? "bold 12px" : "11px"} Inter, system-ui, sans-serif`;
         ctx.textAlign = "center";
         ctx.textBaseline = "top";
-        ctx.fillStyle = isHovered ? "#22d3ee" : "#8b8b9e";
+        ctx.fillStyle = isHovered ? `rgb(${cyan})` : `rgb(${muted})`;
         ctx.fillText(node.label, node.x, node.y + 14);
       }
 

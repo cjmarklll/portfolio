@@ -10,6 +10,7 @@ import NoiseOverlay from "@/components/effects/NoiseOverlay";
 import CustomCursor from "@/components/effects/CustomCursor";
 import PageTransition from "@/components/effects/PageTransition";
 import { I18nProvider } from "@/lib/i18n/context";
+import { ThemeProvider } from "@/lib/theme/context";
 import { siteConfig } from "@/lib/constants";
 import "./globals.css";
 
@@ -62,6 +63,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <I18nProvider>
+          <ThemeProvider>
           <PageLoader />
           <ScrollProgress />
           <GridBackground />
@@ -73,6 +75,7 @@ export default function RootLayout({
             <main className="flex-1">{children}</main>
           </PageTransition>
           <Footer />
+          </ThemeProvider>
         </I18nProvider>
       </body>
     </html>

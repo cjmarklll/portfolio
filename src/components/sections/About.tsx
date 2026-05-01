@@ -51,7 +51,7 @@ export default function About() {
     <section id="about" className="py-24 px-6">
       <div className="mx-auto max-w-6xl">
         <ScrollReveal>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-heading mb-4 text-center">
             {t.about.title.split(" ").map((word, i) =>
               i === 1 ? (
                 <span key={i} className="gradient-text">
@@ -100,7 +100,7 @@ export default function About() {
 
           {/* Skills Constellation */}
           <ScrollReveal delay={0.2}>
-            <h3 className="text-lg font-semibold text-white mb-4">
+            <h3 className="text-lg font-semibold text-heading mb-4">
               {t.about.skillsTitle}
             </h3>
             <SkillsConstellation skills={skills} />
@@ -111,7 +111,7 @@ export default function About() {
 
         {/* Timeline */}
         <ScrollReveal>
-          <h3 className="text-2xl font-bold text-white text-center mb-12">
+          <h3 className="text-2xl font-bold text-heading text-center mb-12">
             {locale === "zh" ? "我的经历" : "My Journey"}
           </h3>
         </ScrollReveal>

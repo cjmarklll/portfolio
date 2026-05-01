@@ -11,6 +11,13 @@ interface Particle {
   opacity: number;
 }
 
+function getThemeColors() {
+  const style = getComputedStyle(document.documentElement);
+  const accent = style.getPropertyValue("--color-accent-rgb").trim() || "99, 102, 241";
+  const cyan = style.getPropertyValue("--color-cyan-rgb").trim() || "34, 211, 238";
+  return { accent, cyan };
+}
+
 export default function ParticleField() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -1000, y: -1000 });
@@ -44,7 +51,7 @@ export default function ParticleField() {
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+      const { accent, cyan } = getThemeColors();
       const mouse = mouseRef.current;
       const mouseRadius = 150;
 
@@ -60,7 +67,7 @@ export default function ParticleField() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+            ctx.strokeStyle = `rgba(${accent}, ${alpha})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -76,7 +83,7 @@ export default function ParticleField() {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(mouse.x, mouse.y);
-          ctx.strokeStyle = `rgba(34, 211, 238, ${alpha})`;
+          ctx.strokeStyle = `rgba(${cyan}, ${alpha})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
@@ -86,7 +93,7 @@ export default function ParticleField() {
       particles.forEach((p) => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
+        ctx.fillStyle = `rgba(${accent}, ${p.opacity})`;
         ctx.fill();
 
         // Mouse repulsion
