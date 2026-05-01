@@ -43,30 +43,52 @@ export default function Navigation() {
     >
       <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-lg font-bold text-white hover:text-accent-bright transition-colors"
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
-          <span className="gradient-text">CJ</span>
-        </Link>
+          <Link
+            href="/"
+            className="text-lg font-bold text-white hover:text-accent-bright transition-colors"
+          >
+            <span className="gradient-text">CJ</span>
+          </Link>
+        </motion.div>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
+          {navLinks.map((link, i) => (
+            <motion.div
               key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm transition-colors hover:text-accent-bright",
-                pathname === link.href || pathname.startsWith(link.href + "/")
-                  ? "text-accent-bright"
-                  : "text-text-muted"
-              )}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.4,
+                delay: 0.6 + i * 0.08,
+                ease: [0.22, 1, 0.36, 1],
+              }}
             >
-              {link.label}
-            </Link>
+              <Link
+                href={link.href}
+                className={cn(
+                  "text-sm transition-colors hover:text-accent-bright",
+                  pathname === link.href || pathname.startsWith(link.href + "/")
+                    ? "text-accent-bright"
+                    : "text-text-muted"
+                )}
+              >
+                {link.label}
+              </Link>
+            </motion.div>
           ))}
-          <LanguageSwitcher />
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.6 + navLinks.length * 0.08 }}
+          >
+            <LanguageSwitcher />
+          </motion.div>
         </div>
 
         {/* Mobile hamburger */}
@@ -105,19 +127,25 @@ export default function Navigation() {
             className="md:hidden bg-surface/95 backdrop-blur-xl border-b border-border overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
+              {navLinks.map((link, i) => (
+                <motion.div
                   key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "text-sm py-2 transition-colors",
-                    pathname === link.href
-                      ? "text-accent-bright"
-                      : "text-text-muted hover:text-white"
-                  )}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.06 }}
                 >
-                  {link.label}
-                </Link>
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      "text-sm py-2 transition-colors block",
+                      pathname === link.href
+                        ? "text-accent-bright"
+                        : "text-text-muted hover:text-white"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </motion.div>

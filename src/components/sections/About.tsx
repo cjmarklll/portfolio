@@ -5,6 +5,7 @@ import TiltCard from "@/components/effects/TiltCard";
 import AnimatedCounter from "@/components/effects/AnimatedCounter";
 import Timeline from "@/components/effects/Timeline";
 import SectionDivider from "@/components/effects/SectionDivider";
+import SkillsConstellation from "@/components/effects/SkillsConstellation";
 import Badge from "@/components/ui/Badge";
 import { useI18n } from "@/lib/i18n/context";
 import { skills } from "@/lib/constants";
@@ -97,26 +98,12 @@ export default function About() {
             </div>
           </ScrollReveal>
 
-          {/* Skills with TiltCard */}
+          {/* Skills Constellation */}
           <ScrollReveal delay={0.2}>
-            <TiltCard className="p-6" glowColor="rgba(99, 102, 241, 0.08)">
-              <h3 className="text-lg font-semibold text-white mb-4">
-                {t.about.skillsTitle}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill, i) => (
-                  <motion.div
-                    key={skill}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 + i * 0.05, duration: 0.3 }}
-                  >
-                    <Badge>{skill}</Badge>
-                  </motion.div>
-                ))}
-              </div>
-            </TiltCard>
+            <h3 className="text-lg font-semibold text-white mb-4">
+              {t.about.skillsTitle}
+            </h3>
+            <SkillsConstellation skills={skills} />
           </ScrollReveal>
         </div>
 

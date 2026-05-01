@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import MagneticButton from "@/components/effects/MagneticButton";
 import Typewriter from "@/components/effects/Typewriter";
+import TextScramble from "@/components/effects/TextScramble";
 import { useI18n } from "@/lib/i18n/context";
 
 const ParticleField = dynamic(
@@ -13,27 +15,45 @@ const ParticleField = dynamic(
 
 export default function Hero() {
   const { t } = useI18n();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Parallax transforms - different speeds for depth
+  const particleY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const orb1Y = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const orb2Y = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const badgeY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <ParticleField />
+      {/* Particle layer - slowest parallax */}
+      <motion.div style={{ y: particleY }} className="absolute inset-0">
+        <ParticleField />
+      </motion.div>
 
       {/* Radial gradient overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.08)_0%,transparent_70%)]" />
 
-      {/* Ambient orbs */}
+      {/* Ambient orbs - medium parallax, different speeds */}
       <motion.div
         animate={{
           x: [0, 50, -30, 0],
-          y: [0, -30, 20, 0],
           scale: [1, 1.2, 0.9, 1],
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
         className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full opacity-10"
         style={{
+          y: orb1Y,
           background:
             "radial-gradient(circle, rgba(99,102,241,0.4), transparent 70%)",
           filter: "blur(60px)",
@@ -42,7 +62,6 @@ export default function Hero() {
       <motion.div
         animate={{
           x: [0, -40, 30, 0],
-          y: [0, 20, -40, 0],
           scale: [1, 0.8, 1.1, 1],
         }}
         transition={{
@@ -53,13 +72,18 @@ export default function Hero() {
         }}
         className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full opacity-10"
         style={{
+          y: orb2Y,
           background:
             "radial-gradient(circle, rgba(34,211,238,0.4), transparent 70%)",
           filter: "blur(60px)",
         }}
       />
 
-      <div className="relative z-10 text-center px-6 max-w-3xl">
+      {/* Text content - fastest parallax */}
+      <motion.div
+        style={{ y: textY, opacity }}
+        className="relative z-10 text-center px-6 max-w-3xl"
+      >
         {/* Status badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -175,7 +199,7 @@ export default function Hero() {
             </svg>
           </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
