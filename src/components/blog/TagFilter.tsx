@@ -17,7 +17,7 @@ export default function TagFilter({ tags, activeTag, onTagChange, allLabel = "Al
         className={cn(
           "rounded-full px-4 py-1.5 text-sm transition-all border",
           !activeTag
-            ? "bg-accent text-white border-accent"
+            ? "bg-accent text-heading border-accent"
             : "bg-transparent text-text-muted border-border hover:border-accent/50"
         )}
       >
@@ -30,7 +30,7 @@ export default function TagFilter({ tags, activeTag, onTagChange, allLabel = "Al
           className={cn(
             "rounded-full px-4 py-1.5 text-sm transition-all border",
             activeTag === tag
-              ? "bg-accent text-white border-accent"
+              ? "bg-accent text-heading border-accent"
               : "bg-transparent text-text-muted border-border hover:border-accent/50"
           )}
         >
