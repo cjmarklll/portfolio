@@ -42,7 +42,12 @@ export default function Hero() {
       </motion.div>
 
       {/* Radial gradient overlay */}
-      <div className="hero-overlay absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.08)_0%,transparent_70%)]" />
+      <div
+        className="hero-overlay absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(var(--color-accent-rgb), 0.08) 0%, transparent 70%)",
+        }}
+      />
 
       {/* Ambient orbs - medium parallax, different speeds */}
       <motion.div
@@ -55,7 +60,7 @@ export default function Hero() {
         style={{
           y: orb1Y,
           background:
-            "radial-gradient(circle, rgba(99,102,241,0.4), transparent 70%)",
+            "radial-gradient(circle, rgba(var(--color-accent-rgb), 0.4), transparent 70%)",
           filter: "blur(60px)",
         }}
       />
@@ -74,7 +79,7 @@ export default function Hero() {
         style={{
           y: orb2Y,
           background:
-            "radial-gradient(circle, rgba(34,211,238,0.4), transparent 70%)",
+            "radial-gradient(circle, rgba(var(--color-cyan-rgb), 0.4), transparent 70%)",
           filter: "blur(60px)",
         }}
       />

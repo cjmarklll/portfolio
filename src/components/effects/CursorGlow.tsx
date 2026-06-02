@@ -32,10 +32,10 @@ export default function CursorGlow() {
   return (
     <div
       ref={ref}
-      className="fixed top-0 left-0 w-[400px] h-[400px] pointer-events-none z-[5] opacity-30"
+      className="cursor-glow fixed top-0 left-0 w-[400px] h-[400px] pointer-events-none z-[5] opacity-30"
       style={{
         background:
-          "radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(34,211,238,0.05) 40%, transparent 70%)",
+          "radial-gradient(circle, rgba(var(--color-accent-rgb), 0.15) 0%, rgba(var(--color-cyan-rgb), 0.05) 40%, transparent 70%)",
         filter: "blur(40px)",
       }}
     />

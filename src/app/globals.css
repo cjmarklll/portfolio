@@ -12,8 +12,10 @@
   --color-accent-bright: #818cf8;
   --color-glow: #6366f180;
   --color-cyan: #22d3ee;
+  --color-purple: #a78bfa;
   --color-accent-rgb: 99, 102, 241;
   --color-cyan-rgb: 34, 211, 238;
+  --color-purple-rgb: 167, 139, 250;
   --color-heading-rgb: 255, 255, 255;
   --color-muted-rgb: 139, 139, 158;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -33,8 +35,10 @@
   --color-accent-bright: #4338ca;
   --color-glow: rgba(91, 95, 199, 0.35);
   --color-cyan: #0d6e85;
+  --color-purple: #7c3aed;
   --color-accent-rgb: 91, 95, 199;
   --color-cyan-rgb: 13, 110, 133;
+  --color-purple-rgb: 124, 58, 237;
   --color-heading-rgb: 10, 8, 16;
   --color-muted-rgb: 85, 80, 74;
 }
@@ -98,6 +102,9 @@ body {
 }
 [data-theme="light"] .particle-canvas {
   opacity: 0.25 !important;
+}
+[data-theme="light"] .cursor-glow {
+  opacity: 0.15 !important;
 }
 
 /* Glow utilities */
@@ -314,8 +321,8 @@ body {
 
 /* Pulse glow */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6), 0 0 80px rgba(99, 102, 241, 0.3); }
+  0%, 100% { box-shadow: 0 0 20px rgba(var(--color-accent-rgb), 0.3); }
+  50% { box-shadow: 0 0 40px rgba(var(--color-accent-rgb), 0.6), 0 0 80px rgba(var(--color-accent-rgb), 0.3); }
 }
 .animate-pulse-glow {
   animation: pulse-glow 3s ease-in-out infinite;
@@ -371,7 +378,7 @@ img {
   100% { background-position: 0% 50%; }
 }
 .gradient-text-animated {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-cyan), #a78bfa, var(--color-accent));
+  background: linear-gradient(135deg, var(--color-accent), var(--color-cyan), var(--color-purple), var(--color-accent));
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

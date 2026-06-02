@@ -6,7 +6,8 @@ function getThemeColors() {
   const style = getComputedStyle(document.documentElement);
   const accent = style.getPropertyValue("--color-accent-rgb").trim() || "99, 102, 241";
   const cyan = style.getPropertyValue("--color-cyan-rgb").trim() || "34, 211, 238";
-  return { accent, cyan };
+  const purple = style.getPropertyValue("--color-purple-rgb").trim() || "167, 139, 250";
+  return { accent, cyan, purple };
 }
 
 export default function AuroraBackground() {
@@ -39,13 +40,13 @@ export default function AuroraBackground() {
       time += 1;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const { accent, cyan } = getThemeColors();
+      const { accent, cyan, purple } = getThemeColors();
       const scrollOffset = scrollY * 0.0002;
 
       const blobs = [
         { x: 0.2, y: 0.3, r: 300, color: accent, speed: 0.0003, phase: 0 },
         { x: 0.7, y: 0.5, r: 250, color: cyan, speed: 0.0004, phase: 2 },
-        { x: 0.5, y: 0.8, r: 200, color: "167, 139, 250", speed: 0.00035, phase: 4 },
+        { x: 0.5, y: 0.8, r: 200, color: purple, speed: 0.00035, phase: 4 },
         { x: 0.8, y: 0.2, r: 180, color: accent, speed: 0.0005, phase: 1 },
       ];
 
