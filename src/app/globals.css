@@ -1,6 +1,23 @@
 @import "tailwindcss";
 
-@theme inline {
+@theme {
+  --color-background: var(--color-background);
+  --color-surface: var(--color-surface);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-text-muted: var(--color-text-muted);
+  --color-heading: var(--color-heading);
+  --color-accent: var(--color-accent);
+  --color-accent-bright: var(--color-accent-bright);
+  --color-glow: var(--color-glow);
+  --color-cyan: var(--color-cyan);
+  --color-purple: var(--color-purple);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
   --color-background: #0a0a0f;
   --color-surface: #12121a;
   --color-surface-bright: #1a1a2e;
@@ -18,8 +35,6 @@
   --color-purple-rgb: 167, 139, 250;
   --color-heading-rgb: 255, 255, 255;
   --color-muted-rgb: 139, 139, 158;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
 }
 
 /* Light theme overrides */
@@ -72,18 +87,18 @@ body {
 /* Grid background */
 .grid-bg {
   background-image: linear-gradient(
-      rgba(99, 102, 241, 0.08) 1px,
+      rgba(var(--color-accent-rgb), 0.08) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(var(--color-accent-rgb), 0.08) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 [data-theme="light"] .grid-bg {
   background-image: linear-gradient(
-      rgba(91, 95, 199, 0.06) 1px,
+      rgba(var(--color-accent-rgb), 0.06) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(91, 95, 199, 0.06) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(var(--color-accent-rgb), 0.06) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -290,7 +305,7 @@ body {
   background: linear-gradient(
     110deg,
     transparent 25%,
-    rgba(99, 102, 241, 0.1) 37%,
+    rgba(var(--color-accent-rgb), 0.1) 37%,
     transparent 63%
   );
   background-size: 200% 100%;
@@ -300,7 +315,7 @@ body {
   background: linear-gradient(
     110deg,
     transparent 25%,
-    rgba(91, 95, 199, 0.05) 37%,
+    rgba(var(--color-accent-rgb), 0.05) 37%,
     transparent 63%
   );
   background-size: 200% 100%;
